@@ -39,7 +39,7 @@ namespace avl
 
                 conexao.Open();
 
-                comando.CommandText = "SELECT * FROM tblrec;";
+                comando.CommandText = "SELECT * FROM tblavl;";
                 MySqlDataAdapter adaptadoruser = new MySqlDataAdapter(comando);
                 DataTable tabelauser = new DataTable();
                 adaptadoruser.Fill(tabelauser);
@@ -85,7 +85,7 @@ namespace avl
                 if (user.Text != "" && textBoxcpf.Text != "")
                 {
                     conexao.Open();
-                    comando.CommandText = "INSERT INTO tblrec(usuario,senha,nivel,email,celular,cpf,endereco) VALUES('" + user.Text + "', '" + senha.Text + "', '" + comboBoxnivel.Text + "', '" + textBoxemail.Text + "', '" + textBoxcelular.Text + "', '" + textBoxcpf.Text + "', '" + textBoxendereco.Text + "');";
+                    comando.CommandText = "INSERT INTO tblavl(usuario,senha,nivel,email,celular,cpf,endereco) VALUES('" + user.Text + "', '" + senha.Text + "', '" + comboBoxnivel.Text + "', '" + textBoxemail.Text + "', '" + textBoxcelular.Text + "', '" + textBoxcpf.Text + "', '" + textBoxendereco.Text + "');";
                     comando.ExecuteNonQuery();
                     MessageBox.Show("Cadastrado");
 
@@ -125,7 +125,7 @@ namespace avl
             {
 
                 conexao.Open();
-                comando.CommandText = "UPDATE tblrec SET usuario = '" + user.Text + "', senha = '" + senha.Text + "', nivel = '" + comboBoxnivel.Text + "', email = '" + textBoxemail.Text + "', celular = '" + textBoxcelular.Text + "', cpf = '" + textBoxcpf.Text + "', endereco = '" + textBoxendereco.Text + "' WHERE  id = " + id + ";";
+                comando.CommandText = "UPDATE tblavl SET usuario = '" + user.Text + "', senha = '" + senha.Text + "', nivel = '" + comboBoxnivel.Text + "', email = '" + textBoxemail.Text + "', celular = '" + textBoxcelular.Text + "', cpf = '" + textBoxcpf.Text + "', endereco = '" + textBoxendereco.Text + "' WHERE  id = " + id + ";";
                 int resultado = comando.ExecuteNonQuery();
                 if (resultado > 0)
                 {
@@ -165,7 +165,7 @@ namespace avl
             {
 
                 conexao.Open();
-                comando.CommandText = "DELETE FROM tblrec WHERE id = " + id + ";";
+                comando.CommandText = "DELETE FROM tblavl WHERE id = " + id + ";";
                 int resultado = comando.ExecuteNonQuery();
                 if (resultado > 0)
                 {
@@ -205,7 +205,7 @@ namespace avl
                 {
                     conexao.Open();
 
-                    comando.CommandText = "SELECT * FROM tblrec WHERE usuario LIKE '%" + textBoxpesquisar.Text + "%';";
+                    comando.CommandText = "SELECT * FROM tblavl WHERE usuario LIKE '%" + textBoxpesquisar.Text + "%';";
                     MySqlDataAdapter adaptadorusers = new MySqlDataAdapter(comando);
                     DataTable tabelausers = new DataTable();
                     adaptadorusers.Fill(tabelausers);
@@ -221,6 +221,36 @@ namespace avl
             finally
             {
                 conexao.Close();
+
             }
+        }
+
+        private void dataGridViewusers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            id = dataGridViewusers.CurrentRow.Cells[0].Value.ToString();
+            user.Text = dataGridViewusers.CurrentRow.Cells[1].Value.ToString();
+            senha.Text = dataGridViewusers.CurrentRow.Cells[2].Value.ToString();
+            comboBoxnivel.Text = dataGridViewusers.CurrentRow.Cells[3].Value.ToString();
+            textBoxemail.Text = dataGridViewusers.CurrentRow.Cells[5].Value.ToString();
+            textBoxcelular.Text = dataGridViewusers.CurrentRow.Cells[4].Value.ToString();
+            textBoxcpf.Text = dataGridViewusers.CurrentRow.Cells[6].Value.ToString();
+            textBoxendereco.Text = dataGridViewusers.CurrentRow.Cells[7].Value.ToString();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxnivel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

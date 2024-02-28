@@ -88,11 +88,12 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 282);
+            this.label4.Location = new System.Drawing.Point(14, 282);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 1;
             this.label4.Text = "Celular:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -113,6 +114,7 @@
             this.label6.Size = new System.Drawing.Size(48, 15);
             this.label6.TabIndex = 1;
             this.label6.Text = "Email:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -246,10 +248,14 @@
             // comboBoxnivel
             // 
             this.comboBoxnivel.FormattingEnabled = true;
+            this.comboBoxnivel.Items.AddRange(new object[] {
+            "Administrador",
+            "Usuário"});
             this.comboBoxnivel.Location = new System.Drawing.Point(6, 184);
             this.comboBoxnivel.Name = "comboBoxnivel";
             this.comboBoxnivel.Size = new System.Drawing.Size(209, 21);
             this.comboBoxnivel.TabIndex = 6;
+            this.comboBoxnivel.SelectedIndexChanged += new System.EventHandler(this.comboBoxnivel_SelectedIndexChanged);
             // 
             // dataGridViewusers
             // 
@@ -262,6 +268,7 @@
             this.dataGridViewusers.Size = new System.Drawing.Size(589, 518);
             this.dataGridViewusers.TabIndex = 7;
             this.dataGridViewusers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewusers_CellContentClick);
+            this.dataGridViewusers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewusers_CellMouseDoubleClick);
             // 
             // cadastro
             // 

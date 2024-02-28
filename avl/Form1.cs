@@ -24,6 +24,9 @@ namespace avl
         public Form1()
         {
             InitializeComponent();
+            servidor = "Server=localhost;Database=avl;Uid=root;Pwd=";
+            conexao = new MySqlConnection(servidor);
+            comando = conexao.CreateCommand();
         }
 
 
